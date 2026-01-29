@@ -22,10 +22,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install 7z
+      - name: Install zip
         run: |
           sudo apt-get update
-          sudo apt-get install -y p7zip-full
+          sudo apt-get install -y zip
 
       - name: Make fetch.sh executable
         run: |
@@ -41,12 +41,12 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          git add words.txt words.7z
+          git add words.txt words.zip
 
           if git diff --cached --quiet; then
             echo "No changes to commit."
             exit 0
           fi
 
-          git commit -m "Daily update: words.txt + words.7z"
+          git commit -m "Daily update: words.txt + words.zip"
           git push
